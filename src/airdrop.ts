@@ -115,8 +115,8 @@ async function main() {
         errors.push(...results.filter((item) => !item.completed))
     }
 
-    fs.writeFileSync('./src/clients/tombstoned/errors_updating.json', JSON.stringify(errors, null, 2));
-    fs.writeFileSync('./src/clients/tombstoned/completed_updating.json', JSON.stringify(completed, null, 2));
+    fs.writeFileSync('./src/lib/error.json', JSON.stringify(errors, null, 2));
+    fs.writeFileSync(`./src/lib/completions${Date.now()}.json`, JSON.stringify(completed, null, 2));
     console.log("Completed", completed.length)
     console.log("Errors", errors.length)
     console.log("Operating at a success rate of ", completed.length / manifest.length * 100, "%")
